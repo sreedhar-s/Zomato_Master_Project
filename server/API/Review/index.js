@@ -5,6 +5,12 @@ import passport from "passport";
 //Database Model
 import {ReviewModel} from "../../database/allModels";
 
+//validation
+import { validateReviewData,validateFoodId } from "../../validation/review";
+import { validateRestaurantId } from "../../validation/food";
+import { validateUserId } from "../../validation/order";
+
+
 const Router = express.Router();
 
 /*

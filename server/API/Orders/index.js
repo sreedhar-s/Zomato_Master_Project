@@ -5,6 +5,9 @@ import passport from "passport";
 //Database Model
 import {OrderModel} from "../../database/allModels";
 
+//Validation
+import { validateUserId } from "../../validation/order";
+
 const Router = express.Router();
 
 /*
@@ -17,6 +20,7 @@ Method    get
 
 Router.get("/",async(req,res) => {
     try {
+        await validateUserId(req.params);
         const {_id} = req.params;
         const getOrders = await OrderModel.findOne({user: _id});
 
@@ -38,6 +42,7 @@ Method    Post
 
 Router.post("/new/:_id",async (req,res) =>{
     try {
+        await validateUserId(req.params);
         const {_id} = req.params;
         const {orderDetails} = req.body;
 
@@ -58,7 +63,6 @@ Router.post("/new/:_id",async (req,res) =>{
         return res.status(500).json({error: error.message});
     }
 });
-
 
 
 export default Router;
