@@ -5,7 +5,7 @@ import { Route } from "react-router-dom";
 //Layout
 import HomeLayout from "../Layout/Home.layout";
 
-const HomeLayoutHOC = ({ component: Component }, ...rest) => {
+const HomeLayoutHOC = ({ component: Component , ...rest}) => {
   return (
     <>
       <Route

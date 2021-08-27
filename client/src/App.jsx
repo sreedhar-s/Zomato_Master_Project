@@ -1,24 +1,27 @@
-//HOC
+// HOC
+import React from 'react';
 import HomeLayoutHOC from "./HOC/Home.Hoc";
 
-//Cpmponent
+// Component
 import Temp from "./Components/temp";
+import Master from "./Components/master";
 
 function App() {
   return (
     <>
       <HomeLayoutHOC path="/" exact component={Temp} />
-      
+      <HomeLayoutHOC path="/:type" exact component={Master} />
     </>
   );
 }
 
 export default App;
 
+// :type
 
-//Dielievery
-//Dining out
-//Night
-//Nutri
+// delivery
+// dining
+// nightlife
+// nutrition
 
-//Master -> Url parameter.
+// master -> type
