@@ -70,4 +70,5 @@ const DeliveryCarousal = () => {
   );
 };
 
+
 export default DeliveryCarousal;
