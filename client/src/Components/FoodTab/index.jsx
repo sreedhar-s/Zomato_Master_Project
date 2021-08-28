@@ -146,7 +146,6 @@ const LargeTab = () => {
   );
 };
 
-
 const FoodTab = () => {
   return (
     <>

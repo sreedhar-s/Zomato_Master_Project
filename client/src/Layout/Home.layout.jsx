@@ -7,11 +7,11 @@ import FoodTab from "../Components/FoodTab";
 const HomeLayout = (props) => {
   return (
     <>
-      <Navbar /> 
+      <Navbar />
+      <FoodTab /> 
       <div className="conatiner mx-auto px-4 lg:px-20">
           {props.children}
       </div>
-      <FoodTab />
     </>
   );
 };
