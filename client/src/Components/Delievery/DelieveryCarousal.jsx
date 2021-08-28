@@ -3,7 +3,7 @@ import Slider from "react-slick";
 
 // components
 import DeliveryCategory from "./DeliveryCategory";
-import { NextArrow,PrevArrow } from "../CarousalArrow";
+import { NextArrow, PrevArrow } from "../CarousalArrow";
 
 const DeliveryCarousal = () => {
   const categories = [
@@ -50,25 +50,24 @@ const DeliveryCarousal = () => {
 
   return (
     <>
-      <h1 className="text-xl mb-4 font-semibold px-5">
-        Inspiration for your first order
-      </h1>
-      <div className="lg:hidden flex gap-3 lg:gap-0 flex-wrap justify-between">
-        {categories.map((food) => (
-          <DeliveryCategory {...food} />
-        ))}
-      </div>
+        <h1 className="text-xl mb-4 font-semibold">
+          Inspiration for your first order
+        </h1>
+        <div className="lg:hidden flex lg:gap-0 gap-4 flex-wrap justify-between">
+          {categories.map((food) => (
+            <DeliveryCategory {...food} />
+          ))}
+        </div>
 
-      <div className="hidden lg:block">
+      <div className="hidden lg:block mb-6">
         <Slider {...settings}>
-            {categories.map((food) => (
-              <DeliveryCategory {...food} />
-            ))}
+          {categories.map((food) => (
+            <DeliveryCategory {...food} />
+          ))}
         </Slider>
       </div>
     </>
   );
 };
-
 
 export default DeliveryCarousal;

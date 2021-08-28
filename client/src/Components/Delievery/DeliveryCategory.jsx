@@ -23,11 +23,11 @@ const DeliveryLgCard = ({ image, title }) => {
   return (
     <>
       <div className="hidden lg:block w-64 h-48">
-        <div className="w-full h-full px-5">
+        <div className="w-full h-full px-10">
           <img
             src={image}
             alt="food"
-            className="w-full h-full object-cover rounded-md shadow-lg"
+            className="w-full h-full object-cover rounded-md"
           />
         </div>
         <div className="">
