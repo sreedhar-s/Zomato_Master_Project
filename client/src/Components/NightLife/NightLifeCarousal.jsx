@@ -12,8 +12,8 @@ const NightLifeCarousal = () => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-        NextArrow: <NextArrow />,
-        PrevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
     };
     return (
         <div className="w-full">
