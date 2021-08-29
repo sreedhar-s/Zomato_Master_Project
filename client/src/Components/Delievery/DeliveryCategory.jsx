@@ -22,16 +22,18 @@ const DeliverySmCard = ({ image, title }) => {
 const DeliveryLgCard = ({ image, title }) => {
   return (
     <>
-      <div className="hidden lg:block w-64 h-48">
-        <div className="w-full h-full px-10">
-          <img
-            src={image}
-            alt="food"
-            className="w-full h-full object-cover rounded-md"
-          />
-        </div>
-        <div className="">
-          <h3 className="text-xl my-1 font-medium">{title}</h3>
+      <div className="hidden lg:block p-3 w-full h-48">
+        <div className="w-full h-full">
+          <div className="w-full h-full">
+            <img
+              src={image}
+              alt="food"
+              className="w-full h-full object-cover rounded-md"
+            />
+          </div>
+          <div className="">
+            <h3 className="text-xl my-1 font-medium">{title}</h3>
+          </div>
         </div>
       </div>
     </>
