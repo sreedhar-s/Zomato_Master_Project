@@ -1,14 +1,18 @@
-import React from 'react';
+import React from "react";
 
 //components
-import NutritionCarousal from './NutritionCarousal';
+import NutritionHeroCarousal from "./NutritionHeroCarousal";
+import NutritionCarousal from "./NutritionCarousal";
 
 const Nutrition = () => {
-    return (
-        <div>
-            <NutritionCarousal />
-        </div>
-    );
-}
+  return (
+    <div>
+      <NutritionHeroCarousal />
+      <div className="my-6 gap-3">
+        <NutritionCarousal />
+      </div>
+    </div>
+  );
+};
 
 export default Nutrition;
