@@ -1,10 +1,10 @@
 import React from "react";
 
 const NutritionCard = ({ image, title }) => {
-  return (
-    <div className="overflow-hidden">
-        <div className="bg-white shadow-lg rounded-md w-24 h-full px-3 md:px-4 md:py-3 md:w-56">
-          <div className="w-full md:h-36 h-12">
+    return (
+      <>
+        <div className=" bg-white shadow rounded-md w-24 h-full px-3  md:px-4  md:w-56">
+          <div className="w-full h-12 md:h-36">
             <img
               src={image}
               alt="food"
@@ -17,8 +17,8 @@ const NutritionCard = ({ image, title }) => {
             </h3>
           </div>
         </div>
-    </div>
-  );
+      </>
+    );
 };
 
 const NutritionCarousalCard = (props) => {
