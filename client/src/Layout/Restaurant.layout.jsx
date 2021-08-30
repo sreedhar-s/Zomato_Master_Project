@@ -9,6 +9,7 @@ import RestaurantNavbar from "../Components/Navbar/RestaurantNavbar";
 import ImageGrid from "../Components/Restaurant/ImageGrid";
 import RestaurantInfo from "../Components/Restaurant/RestaurantInfo";
 import InfoButtons from "../Components/Restaurant/InfoButtons";
+import TabContainer from "../Components/Restaurant/Tabs";
 
 const RestaurantLayout = () => {
   return (
@@ -45,6 +46,10 @@ const RestaurantLayout = () => {
           <InfoButtons>
               <IoMdShareAlt /> Share
           </InfoButtons>
+        </div>
+
+        <div className="my-4">
+          <TabContainer />
         </div>
       </div>
     </>
