@@ -56,7 +56,7 @@ const Overview = () => {
   };
   return (
     <>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row relative">
         <div className="w-full md:w-8/12">
           <h2 className="font-semibold text-lg md:text-xl my-4">
             About this place

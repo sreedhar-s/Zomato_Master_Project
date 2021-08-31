@@ -33,39 +33,7 @@ const OrderOnline = () => {
                   price: "₹1000",
                   description:
                     "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-                  rating: 3,
-                },
-                {
-                    image:
-                      "https://b.zmtcdn.com/data/dish_photos/d23/b61bd95f61310d91b811cbc407f8fd23.jpg?fit=around|130:130&crop=130:130;*,*",
-                    title: "Kheema Masala",
-                    price: "₹1000",
-                    description:
-                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-                    rating: 3,
-                },
-                {
-                    image:
-                      "https://b.zmtcdn.com/data/dish_photos/d23/b61bd95f61310d91b811cbc407f8fd23.jpg?fit=around|130:130&crop=130:130;*,*",
-                    title: "Kheema Masala",
-                    price: "₹1000",
-                    description:
-                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-                    rating: 3,
-                },
-              ]}
-            />
-            <FoodList
-              title="Pizza"
-              items={[
-                {
-                  image:
-                    "https://b.zmtcdn.com/data/dish_photos/d23/b61bd95f61310d91b811cbc407f8fd23.jpg?fit=around|130:130&crop=130:130;*,*",
-                  title: "Kheema masala",
-                  price: "₹1000",
-                  description:
-                    "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-                  rating: 3,
+                  rating: 4,
                 },
               ]}
             />
