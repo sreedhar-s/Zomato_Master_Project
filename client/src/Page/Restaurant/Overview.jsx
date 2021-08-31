@@ -3,24 +3,52 @@ import { Link, useParams } from "react-router-dom";
 import { RiArrowRightSFill } from "react-icons/ri";
 import Slider from "react-slick";
 import ReactStars from "react-rating-stars-component";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 //Components
 import MenuCollections from "../../Components/Restaurant/MenuCollections";
 import MenuSimilarRestaurantCard from "../../Components/Restaurant/MenuSimilarRestaurantCard";
 import { NextArrow, PrevArrow } from "../../Components/CarousalArrow";
 import ReviewCard from "../../Components/Restaurant/ReviewCard";
+import MapView from "../../Components/Restaurant/MapView";
 
 const Overview = () => {
   const { id } = useParams();
   const settings = {
-    arrows: true,
-    infinite: true,
+    arrows:true,
+    dots: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const ratingChanged = (newRating) => {
@@ -110,6 +138,14 @@ const Overview = () => {
               activeColor="#ffd700"
             />
           </div>
+          <div className="my-4 w-full md:hidden flex flex-col gap-4">
+            <MapView
+              title="Mumbai Express"
+              phono="+91 89675634566"
+              mapLocation={[17.42340425229807, 78.51097166632998]}
+              address="Alltos A&M Trade Center, Himayath Nagar, Hyderabad"
+            />
+          </div>
           <div className="flex flex-col my-4 gap-4">
             <ReviewCard />
             <ReviewCard />
@@ -118,32 +154,14 @@ const Overview = () => {
         </div>
         <aside
           style={{ height: "fit-content" }}
-          className="hidden md:block md:w-1/3 sticky rounded-xl top-2 bg-white p-3 shadow-md "
+          className="hidden md:flex md:w-1/3 sticky rounded-xl top-2 bg-white p-3 shadow-md flex-col gap-4"
         >
-          <div>
-            <h4 className="text-lg font-medium">Call</h4>
-            <h5 className="text-zomato-400 font-medium">+91 8978456783</h5>
-          </div>
-          <div>
-            <h4 className="text-lg font-medium">Direction</h4>
-            <div className="w-full h-48">
-              <MapContainer
-                center={[17.403782779511427, 78.4698438010858]}
-                zoom={13}
-                scrollWheelZoom={false}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[17.403782779511427, 78.4698438010858]}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            </div>
-          </div>
+          <MapView
+            title="Mumbai Express"
+            phono="+91 89675634566"
+            mapLocation={[17.42340425229807, 78.51097166632998]}
+            address="Alltos A&M Trade Center, Himayath Nagar, Hyderabad"
+          />
         </aside>
       </div>
     </>
