@@ -6,8 +6,8 @@ const MenuCategory = (props) => {
   return (
     <>
       <div
-        className={classnames({
-          "text-zomato-400 py-2 px-1 bg-zomato-50 border-r-4 border-zomato-400":
+        className={classnames("font-normal md:text-lg",{
+          "text-zomato-400 py-2 px-1 bg-zomato-50 border-r-4 font-medium  border-zomato-400":
             props.isActive,
         })}
         onClick={props.onClickHandler}
