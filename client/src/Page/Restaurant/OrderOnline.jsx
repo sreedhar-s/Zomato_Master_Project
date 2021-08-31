@@ -8,9 +8,13 @@ const OrderOnline = () => {
   return (
     <>
       <div className="w-full">
-        <MenuListContainer />
-        <FloatMenuBtn />
+        <aside className="hidden md:flex flex-col gap-3 border-r overflow-y-scroll border-gray-200 h-screen w-1/4">
+          <MenuListContainer />
+          <MenuListContainer />
+        </aside>
+        <div className="w-full md:3/4"></div>
       </div>
+      <FloatMenuBtn />
     </>
   );
 };
