@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import ReactStars from "react-rating-stars-component";
 
 //Components
-import MenuCollections from "../../Components/Restaurant/MenuCollections";
+import MenuCollections from "../../Components/Restaurant/MenuCollection";
 import MenuSimilarRestaurantCard from "../../Components/Restaurant/MenuSimilarRestaurantCard";
 import { NextArrow, PrevArrow } from "../../Components/CarousalArrow";
 import ReviewCard from "../../Components/Restaurant/ReviewCard";
@@ -14,7 +14,7 @@ import MapView from "../../Components/Restaurant/MapView";
 const Overview = () => {
   const { id } = useParams();
   const settings = {
-    arrows:true,
+    arrows: true,
     dots: true,
     infinite: false,
     speed: 500,
@@ -73,7 +73,10 @@ const Overview = () => {
             <MenuCollections
               menuTitle="Menu"
               pages="3"
-              image="https://b.zmtcdn.com/data/menus/470/18356470/cbc627de0e75a600708623a8bcef9079.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+              image={[
+                "https://b.zmtcdn.com/data/menus/470/18356470/cbc627de0e75a600708623a8bcef9079.jpg",
+                "https://b.zmtcdn.com/data/menus/470/18356470/cbc627de0e75a600708623a8bcef9079.jpg",
+              ]}
             />
           </div>
           <h4 className="text-lg font-medium">Cusines</h4>
