@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiTwotoneStar } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+
+import { getImage } from "../Redux/Reducer/Image/Image.action";
 
 const RestaurantCard = (props) => {
+  const [image, setImage] = useState({
+    images: [],
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    props.photos && dispatch(getImage(props.photos)).then((data) => setImage(data.payload.image));
+  }, [props.photos]);
+
   return (
     <>
       <div className="bg-white p-3 mb-4 w-full rounded-2xl transition duration-700 ease-in-out hover:shadow-lg lg:w-1/3 md:w-1/2">
@@ -9,16 +22,22 @@ const RestaurantCard = (props) => {
           <div className="absolute flex items-end justify-between w-full bottom-2">
             <div className="flex flex-col gap-2 items-start">
               {props.isPro && (
-                <span className="bg-zomato-500 text-white px-2 py-1 rounded text-sm">Pro extra 10% off</span>
+                <span className="bg-zomato-500 text-white px-2 py-1 rounded text-sm">
+                  Pro extra 10% off
+                </span>
               )}
               {props.isOff && (
-                <span className="bg-blue-600 text-white px-2 py-1 rounded text-sm">₹{`${props.isOff}`} OFF</span>
+                <span className="bg-blue-600 text-white px-2 py-1 rounded text-sm">
+                  ₹{`${props.isOff}`} OFF
+                </span>
               )}
             </div>
-            <span className="bg-white bg-opacity-75 p-1 rounded mr-3">{props.durationOfdelievery} min</span>
+            <span className="bg-white bg-opacity-75 p-1 rounded mr-3">
+              {props.durationOfdelievery} min
+            </span>
           </div>
           <img
-            src={props.photos.length && props.photos[0]}
+            src={image.images.length && image.images[0].location}
             alt="food"
             className="w-full h-full rounded-lg"
           />
