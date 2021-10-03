@@ -1,8 +1,9 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import { RiArrowRightSFill } from "react-icons/ri";
 import Slider from "react-slick";
 import ReactStars from "react-rating-stars-component";
+import {useSelector, useDispatch} from "react-redux";
 
 //Components
 import MenuCollections from "../../Components/Restaurant/MenuCollection";
@@ -11,7 +12,12 @@ import { NextArrow, PrevArrow } from "../../Components/CarousalArrow";
 import ReviewCard from "../../Components/Restaurant/ReviewCard";
 import MapView from "../../Components/Restaurant/MapView";
 
+import { getImage } from "../../Redux/Reducer/Image/Image.action";
+import { getReviews } from "../../Redux/Reducer/Reviews/review.action";
+
 const Overview = () => {
+  const [menuImages, setMenuImages] = useState({images: []});
+  const [Reviews, setReviewss] = useState([]);
   const { id } = useParams();
   const settings = {
     arrows: true,

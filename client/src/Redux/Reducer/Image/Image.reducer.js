@@ -8,7 +8,7 @@ const ImageReducer = (state = INITIAL_STATE, action) => {
     switch (action.type){
         case GET_IMAGE:return {
             ...state,
-            restaurants: action.payload,
+            Image: action.payload,
         };
 
         default: return{

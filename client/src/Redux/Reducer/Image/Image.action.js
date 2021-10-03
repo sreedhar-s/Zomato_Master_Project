@@ -3,7 +3,7 @@ import axios from "axios";
 //redux types
 import { GET_IMAGE } from "./Image.type";
 
-export const getImage = () => async (dispatch) => {
+export const getImage = (_id) => async (dispatch) => {
   try {
     const Image = await axios({
       method: "GET",

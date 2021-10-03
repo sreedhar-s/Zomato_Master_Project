@@ -6,26 +6,26 @@ const ImageGrid = (props) => {
     <>
       <div className="w-full h-60 mt-6 md:hidden overflow-hidden">
         <img
-          src={props.images[0]}
+          src={props.images.length && props.images[0].location}
           className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
         />
       </div>
       <div className="hidden w-full h-96 md:flex gap-2">
         <div className="w-full h-full overflow-hidden">
           <img
-            src={props.images[0]}
+            src={props.images.length && props.images[0].location}
             alt="restaurantImage"
             className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
           />
         </div>
         <div className="w-1/4 h-full flex flex-col gap-1 overflow-hidden">
           <img
-            src={props.images[1]}
+            src={props.images.length >= 1 && props.images[1].location}
             alt="restaurantImage"
             className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
           />
           <img
-            src={props.images[2]}
+            src={props.images.length >= 2 && props.images[2].location}
             alt="restaurantImage"
             className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
           />
@@ -33,7 +33,7 @@ const ImageGrid = (props) => {
         <div className="w-1/4 h-full flex flex-col gap-1 overflow-hidden">
           <div className="w-full h-full relative">
             <img
-              src={props.images[3]}
+              src={props.images.length >= 3 && props.images[3].location}
               alt="restaurantImage"
               className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
             />
@@ -44,7 +44,7 @@ const ImageGrid = (props) => {
           </div>
           <div className="w-full h-full relative">
             <img
-              src={props.images[4]}
+              src={props.images.length >= 4 && props.images[4].location}
               alt="restaurantImage"
               className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
             />
