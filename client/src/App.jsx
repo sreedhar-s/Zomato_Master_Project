@@ -26,10 +26,10 @@ function App() {
         <Redirect to="/delivery" />
       </Route>
       {/* <HomeLayoutHOC path="/" exact component={Temp} /> */}
-      {/* <RedirectRestaurant path="/restaurant/:id" exact component={RedirectRestaurant} /> */}
-      <Route path="/restaurant/:id" exact>
+      <Route path="/restaurant/:id" exact component={RedirectRestaurant} />
+      {/* <Route path="/restaurant/:id" exact>
         <Redirect to="/restaurant/:id/overview" />
-      </Route>
+      </Route> */}
       <HomeLayoutHOC path="/:type" exact component={Home} />
       <RestaurantLayoutHOC path="/restaurant/:id/overview" exact component={Overview}/>
       <RestaurantLayoutHOC path="/restaurant/:id/order-online" exact component={OrderOnline}/>
