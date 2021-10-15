@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { TiStarOutline } from "react-icons/ti";
-import { RiDirectionLine } from "react-icons/ri";
+import { RiContactsBookLine, RiDirectionLine } from "react-icons/ri";
 import { BiBookmarkPlus } from "react-icons/bi";
 import { IoMdShareAlt } from "react-icons/io";
 
@@ -22,7 +22,7 @@ const RestaurantLayout = (props) => {
   const [restaurant, setRestaurant] = useState({
     images: [],
     name: "",
-    cusine: "",
+    cuisine: "",
     address: "",
   });
   const { id } = useParams();
@@ -31,28 +31,28 @@ const RestaurantLayout = (props) => {
   useEffect(() => {
     dispatch(getSpecificRestaurant(id)).then((data) => {
       setRestaurant((prev) => ({
-        ...prev,
-        ...data.payload.restaurant,
-      }));
-    });
-  }, []);
 
+        ...prev,
+        ...data.payload.restaurants,
+      }));
+      dispatch(getImage(data.payload.restaurants?.photos)).then(data => setRestaurant(prev => ({...prev, ...data.payload.image })));
+    });
+  },[]);
   return (
     <>
+      {" "}
       <RestaurantNavbar />
-      <div className="container mx-auto px-4 lg:px-20 mt-4">
-        <ImageGrid images={restaurant?.images} />
+      <div className="container mx-auto px-4 lg:px-20 pb-10 ">
+        <ImageGrid images={restaurant.images} />
         <RestaurantInfo
           name={restaurant?.name}
           restaurantRating={restaurant?.rating || 0}
           deliveryRating={restaurant?.rating || 0}
-          cusine={restaurant?.cusine}
-          a
+          cuisine={restaurant?.cuisine}
           address={restaurant?.address}
         />
-        
         <div className="my-4 flex flex-wrap gap-3">
-          <InfoButtons isActive>
+          <InfoButtons isActive> 
             <TiStarOutline /> Add Review
           </InfoButtons>
           <InfoButtons>
@@ -65,7 +65,6 @@ const RestaurantLayout = (props) => {
             <IoMdShareAlt /> Share
           </InfoButtons>
         </div>
-
         <div className="my-10">
           <TabContainer></TabContainer>
         </div>

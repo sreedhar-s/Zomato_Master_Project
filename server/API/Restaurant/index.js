@@ -88,7 +88,7 @@ Router.delete("/delete", passport.authenticate("jwt"), async (req, res) => {
 Router.get("/:id", async (req, res) => {
   try {
     const restaurant = await RestaurantModel.findById(req.params.id);
-    if (!restaurant)
+    if (!restaurant)  
       return res.status(404).json({ restaurants: "Restaurant Not Found!!!" });
 
     return res.json({ restaurants: restaurant });

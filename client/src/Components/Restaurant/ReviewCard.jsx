@@ -1,6 +1,19 @@
-import React from "react";
+import React,{useState,useEffect} from"react";
 import { GoStar } from "react-icons/go";
-const ReviewCard = () => {
+import { useDispatch } from "react-redux";
+import { getUser } from "../../Redux/Reducer/User/user.action";
+import  dayjs from "dayjs";
+
+const ReviewCard = (props) => {
+  const [user, setUser] = useState("");
+    const dispatch = useDispatch();
+    
+
+    useEffect(() => {
+      dispatch(getUser(props.user)).then(data => 
+        setUser(data?.payload?.user)
+      );
+  }, []);
   return (
     <>
       <div className="flex flex-col gap-3">
@@ -14,7 +27,7 @@ const ReviewCard = () => {
               />
             </div>
             <div className="flex flex-col gap-1">
-              <h3 className="text-lg font-semibold">Sreedhar</h3>
+              <h3 className="text-lg font-semibold">{user?.fullname}</h3>
               <small className="text-gray-500">
                 5 Reviews &#8226; 3Followers
               </small>
@@ -29,16 +42,15 @@ const ReviewCard = () => {
             <span className="text-white text-xs bg-green-700 px-2 py-1 rounded-lg flex items-center gap-1">
               3 <GoStar />
             </span>
-            <h5 className="font-regular uppercase">Delivery</h5>
-            <small className="text-gray-500">3 days ago</small>
+            <h5 className="font-regular uppercase">{props.isRestaurantReview ? "Dining" : "Delivery"}</h5>
+            <small className="text-gray-500">{dayjs(props.createdAt).format("DD MM YYYY")}</small>
           </div>
           <div className="w-full">
-              <p className="text-gray-600 font-light text-base">Cannot give a single star.. but without giving a star.. I can't post this.... I have.. received wrong items.. waste outlet..</p>
+              <p className="text-gray-600 font-light text-base">{props.reviewText} </p>
           </div>
         </div>
       </div>
     </>
   );
 };
-
 export default ReviewCard;

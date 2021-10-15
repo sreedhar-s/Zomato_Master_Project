@@ -13,19 +13,19 @@ const RestaurantCard = (props) => {
   useEffect(() => {
     props?.photos &&
       dispatch(getImage(props.photos)).then((data) => setImage(data.payload.image)
-      );
+    );
   }, [props?.photos]);
 
   return (
     <Link to={`/restaurant/${props._id}`} 
-    className="w-full md:w-1/2 lg:w-1/3 hover:shadow-2xl transition duration-200 ease-in-out p-2 rounded-lg">
-    <div className="bg-white p-4 mb-4 border rounded-lg">
-      <div className="w-full h-56 lg:h-64 relative">
+    className="w-full md:w-1/2 lg:w-1/3 hover:shadow-2xl transition duration-200 ease-in-out p-3 rounded-lg">
+    <div className="bg-white mb-4">
+      <div className="w-full h-56 lg:h-64 relative rounded-2xl">
         <div className="absolute w-full bottom-4 flex items-end justify-between">
           <div className="flex flex-col gap-2 items-start">
             {props.isPro && (
               <span className="bg-zomato-400 text-white px-2 py-1 rounded text-sm">
-                Pro extra 10% off
+                Pro extra {`${props.isPro}`} off
               </span>
             )}
             {props.isOff && (
@@ -39,7 +39,7 @@ const RestaurantCard = (props) => {
           </span>
         </div>
         <img
-          src={image.images.length && image.images[0].location}
+          src={image?.images.length && image?.images[0].location}
           alt="food"
           className="w-full h-full rounded-2xl"
         />
@@ -53,7 +53,7 @@ const RestaurantCard = (props) => {
             </span>
           </div>
           <div className="flex items-center justify-between text-gray-500">
-            <p>{props?.cuisine?.join(", ")}</p>
+            <p>{props.cuisine?.join(", ")}</p>
             <p>₹{props?.averageCost} for one</p>
           </div>
         </div>

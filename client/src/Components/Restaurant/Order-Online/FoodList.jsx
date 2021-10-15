@@ -1,9 +1,14 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
+
+//redux actions
+import { getFood } from "../../../Redux/Reducer/Food/food.action";
 
 //components
 import FoodItem from "./FoodItem";
 
 const FoodList = (props) => {
+  const [food, setFood] = useState([]);
+
   return (
     <>
       <div>
@@ -14,7 +19,7 @@ const FoodList = (props) => {
           {props.items.map((item) => (
             <FoodItem {...item} />
           ))}
-        </div>
+        </div> 
       </div>
     </>
   );

@@ -1,11 +1,19 @@
 // Libraries
 import express from "express";
 import passport from "passport";
+import multer from "multer";
 
-// Database Modals
+// Database modal
 import { ImageModel } from "../../database/allModels";
 
+// Utilities
+import { s3Upload } from "../../Utils/AWS/s3";
+
 const Router = express.Router();
+
+// Multer Config
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 /*
 Route     /
@@ -24,52 +32,34 @@ Router.get("/:_id", async (req, res) => {
   }
 });
 
-// @Route   POST /images/new
-// @des     add new images
-// @access  PRIVATE
-Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
+/*
+Route     /
+Des       Uploads given image to S3 bucket, and saves file link to mongodb
+Params    none
+Access    Public
+Method    POST  
+*/
+Router.post("/", upload.single("file"), async (req, res) => {
   try {
-    const newImages = await ImageModel.create(req.body.imageData);
-    return res.json({ images: newImages });
+    const file = req.file;
+
+    // s3 bucket options
+    const bucketOptions = {
+      Bucket: "zomato123",
+      Key: file.originalname,
+      Body: file.buffer,
+      ContentType: file.mimetype,
+      ACL: "public-read", // Access Control List
+    };
+
+    const uploadImage = await s3Upload(bucketOptions);
+
+    await ImageModel.create({images: [{location: uploadImage.Location}]});
+
+    return res.status(200).json({ uploadImage });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 });
 
-// @Route   DELETE /images/delete/single
-// @des     delete one image
-// @access  PRIVATE
-Router.delete(
-  "/delete/single",
-  passport.authenticate("jwt"),
-  async (req, res) => {
-    try {
-      const deleteOneImage = await ImageModel.findByIdAndUpdate(
-        req.body.imageData.parentID,
-        {
-          $pull: { images: { _id: req.body.imageData.imageID } },
-        },
-        { new: true }
-      );
-      console.log(deleteOneImage);
-      return res.json({ images: Boolean(deleteOneImage) });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
-  }
-);
-
-// @Route   DELETE /images/delete
-// @des     delete all image
-// @access  PRIVATE
-Router.delete("/delete/", passport.authenticate("jwt"), async (req, res) => {
-  try {
-    const deleteImage = await ImageModel.findByIdAndDelete(
-      req.body.imageData.parentID
-    );
-    return res.json({ images: Boolean(deleteImage) });
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
-});
 export default Router;
